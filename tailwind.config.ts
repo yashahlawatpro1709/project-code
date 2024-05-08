@@ -15,6 +15,32 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 };
+
+// Check if config.theme is defined before extending it
+if (config.theme) {
+  config.theme = {
+    ...config.theme,
+    extend: {
+      ...config.theme.extend,
+      keyframes: {
+        scroll: {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform: "translateX(-100%)",
+          },
+        },
+      },
+      animation: {
+        scroll: "scroll 0.8s ease-out",
+      },
+    },
+  };
+}
+
 export default config;
